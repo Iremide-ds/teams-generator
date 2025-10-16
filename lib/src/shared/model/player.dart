@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:teams_gen/dase_model.dart';
+import 'package:teams_gen/src/shared/model/dase_model.dart';
 
 class Player extends BaseModel {
   final String name;

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:teams_gen/app_logger.dart';
-import 'package:teams_gen/group_of_players.dart';
-import 'package:teams_gen/player.dart';
+import 'package:teams_gen/src/shared/model/group_of_players.dart';
+import 'package:teams_gen/src/shared/model/player.dart';
+import 'package:teams_gen/src/shared/util/app_logger.dart';
 
 class DatabaseManager {
   // Private constructor

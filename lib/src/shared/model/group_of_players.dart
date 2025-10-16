@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:teams_gen/dase_model.dart';
-import 'package:teams_gen/data_cache.dart';
-import 'package:teams_gen/player.dart';
+import 'package:teams_gen/src/core/service/data_cache.dart';
+import 'package:teams_gen/src/shared/model/dase_model.dart';
+import 'package:teams_gen/src/shared/model/player.dart';
 
 class GroupOfPlayers extends BaseModel {
   final List<Player> players;
