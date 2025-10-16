@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:teams_gen/src/core/config/colors.dart';
 
 // Shared base theme configuration
 class AppTheme {
   // Common colors
-  static const _brandColor = Color(0xFF5B8DEF);
-  static const _errorColor = Color(0xFFEF5350);
-  static const _successColor = Color(0xFF66BB6A);
-  static const _fontFamily = 'Inter';
+  static const _brandColor = AppColors.brandColor;
+  static const _errorColor = AppColors.errorColor;
+
+  // static const _fontFamily = 'Inter';
 
   // Light-specific palette
-  static const _lightBg = Color(0xFFF9FAFB);
-  static const _lightSurface = Color(0xFFFFFFFF);
-  static const _lightText = Color(0xFF1F2937);
+  static const _lightBg = AppColors.lightBg;
+  static const _lightSurface = AppColors.lightSurface;
+  static const _lightText = AppColors.lightText;
 
   // Dark-specific palette
-  static const _darkBg = Color(0xFF0D1117);
-  static const _darkSurface = Color(0xFF161B22);
-  static const _darkText = Color(0xFFE5E7EB);
+  static const _darkBg = AppColors.darkBg;
+  static const _darkSurface = AppColors.darkSurface;
+  static const _darkText = AppColors.darkText;
 
   // Common text theme
   static const _baseTextTheme = TextTheme(
@@ -65,7 +66,7 @@ class AppTheme {
     return ThemeData(
       brightness: brightness,
       colorScheme: colorScheme,
-      fontFamily: _fontFamily,
+      // fontFamily: _fontFamily,
       scaffoldBackgroundColor: background,
       cardColor: surface,
       textTheme: _baseTextTheme.apply(

@@ -18,11 +18,15 @@ class DatabaseManager {
 
   // Async factory method
   static Future<DatabaseManager> getInstance() async {
+    AppLogger().info('Initializing DatabaseManager...');
+
     if (_instance != null) {
+      AppLogger().info('Existing instance found');
       return _instance!;
     }
 
     if (_completer != null) {
+      AppLogger().info('Existing completer found');
       return _completer!.future;
     }
 
@@ -33,11 +37,18 @@ class DatabaseManager {
       await instance._initialize();
       _instance = instance;
       _completer!.complete(_instance!);
+
+      AppLogger().info('DatabaseManager ready');
       return _instance!;
-    } catch (e) {
+    } catch (e, t) {
       _completer!.completeError(e);
       _completer = null;
+
+      AppLogger().fatalError(e, t, 'DB Manager');
+
       rethrow;
+    } finally {
+      AppLogger().info('DatabaseManager initialized!');
     }
   }
 
