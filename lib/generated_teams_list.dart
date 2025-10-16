@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:teams_gen/data_cache.dart';
-import 'package:teams_gen/group_of_players.dart';
+import 'package:teams_gen/src/core/service/data_cache.dart';
+import 'package:teams_gen/src/shared/model/group_of_players.dart';
 
 class GeneratedTeamsListPage extends StatefulWidget {
   const GeneratedTeamsListPage({
