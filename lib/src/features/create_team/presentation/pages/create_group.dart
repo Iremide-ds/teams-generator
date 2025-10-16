@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teams_gen/generated_teams_list.dart';
+import 'package:teams_gen/src/features/dashboard/presentation/pages/generated_teams_list.dart';
 import 'package:teams_gen/src/shared/model/group_of_players.dart';
 import 'package:teams_gen/src/shared/model/player.dart';
 import 'package:teams_gen/src/shared/shared.dart';
