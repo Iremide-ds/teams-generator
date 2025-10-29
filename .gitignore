@@ -54,5 +54,6 @@ firebase.json
 
 windows/
 macos/
+linux/
 
 lib/firebase_options.dart

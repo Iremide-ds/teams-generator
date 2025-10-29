@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teams_gen/src/shared/extensions/buildcontext.dart';
 import 'package:teams_gen/src/shared/extensions/color.dart';
+import 'package:teams_gen/src/shared/provider/common.dart';
 
 /// A reusable scaffold that handles:
 /// - Loading state
@@ -18,8 +19,23 @@ import 'package:teams_gen/src/shared/extensions/color.dart';
 /// )
 /// ```
 class AppScaffold extends StatelessWidget {
+  const AppScaffold({
+    super.key,
+    this.title,
+    this.body,
+    this.isLoading = AppLoadingState.idle,
+    this.hasError = false,
+    this.isEmpty = false,
+    this.floatingActionButton,
+    this.onRefresh,
+    this.onRetry,
+    this.actions,
+    this.bottom,
+    this.padding = const EdgeInsets.all(16.0),
+  });
+
   final String? title;
-  final bool isLoading;
+  final AppLoadingState isLoading;
   final bool hasError;
   final bool isEmpty;
   final Widget? body;
@@ -28,27 +44,16 @@ class AppScaffold extends StatelessWidget {
   final VoidCallback? onRetry;
   final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
-
-  const AppScaffold({
-    super.key,
-    this.title,
-    this.body,
-    this.isLoading = false,
-    this.hasError = false,
-    this.isEmpty = false,
-    this.floatingActionButton,
-    this.onRefresh,
-    this.onRetry,
-    this.actions,
-    this.bottom,
-  });
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
+    final loading = isLoading == AppLoadingState.busy;
+
     Widget content;
 
     // Handle different UI states
-    if (isLoading) {
+    if (loading) {
       content = Center(
         key: ValueKey('AppScaffold(${key?.hashCode})-center_spinner'),
         child: CircularProgressIndicator(),
@@ -67,7 +72,7 @@ class AppScaffold extends StatelessWidget {
     }
 
     // Optional refresh wrapper
-    if (onRefresh != null && !isLoading && !hasError) {
+    if (onRefresh != null && !loading && !hasError) {
       content = RefreshIndicator(
         key: ValueKey('AppScaffold(${key?.hashCode})-Refresh_Indicator'),
         onRefresh: onRefresh!,
@@ -96,9 +101,12 @@ class AppScaffold extends StatelessWidget {
             )
           : null,
       body: SafeArea(
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: content,
+        child: Padding(
+          padding: padding,
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            child: content,
+          ),
         ),
       ),
       floatingActionButton: floatingActionButton,

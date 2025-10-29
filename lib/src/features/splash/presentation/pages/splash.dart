@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:teams_gen/src/core/config/router.dart';
 import 'package:teams_gen/src/shared/extensions/buildcontext.dart';
+import 'package:teams_gen/src/shared/provider/common.dart';
 import 'package:teams_gen/src/shared/util/init.dart';
 import 'package:teams_gen/src/shared/widgets/scaffold.dart';
 
@@ -22,7 +23,7 @@ class _SPlashScreenState extends ConsumerState<SPlashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(isLoading: true);
+    return AppScaffold(isLoading: AppLoadingState.busy);
   }
 
   Future<void> _init() async {
@@ -31,7 +32,7 @@ class _SPlashScreenState extends ConsumerState<SPlashScreen> {
     if (mounted) {
       context.showInfoToast('Hello there!');
 
-      context.replaceRoute(HomeRoute());
+      context.replaceRoute(LoginRoute());
     }
   }
 }
