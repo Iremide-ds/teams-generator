@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:teams_gen/src/features/authentication/presentation/pages/login.dart';
 import 'package:teams_gen/src/features/dashboard/presentation/pages/home.dart';
 import 'package:teams_gen/src/features/splash/presentation/pages/splash.dart';
 import 'package:teams_gen/src/shared/util/app_logger.dart';
 
 Route<dynamic>? appRouteBuilder(RouteSettings settings) {
-  final routes = <AppRoute>[RootRoute(), HomeRoute()];
+  final routes = <AppRoute>[RootRoute(), LoginRoute(), HomeRoute()];
 
   final path = settings.name;
 
@@ -29,6 +30,7 @@ Route<dynamic>? appRouteBuilder(RouteSettings settings) {
 
 enum AppRoutePath {
   root('/'),
+  login('/login'),
   home('/home');
 
   final String path;
@@ -54,8 +56,19 @@ final class RootRoute extends AppRoute {
     : super(
         path: AppRoutePath.root,
         data: null,
-        builder: (context, args) {
+        builder: (_, __) {
           return const SPlashScreen();
+        },
+      );
+}
+
+final class LoginRoute extends AppRoute {
+  LoginRoute()
+    : super(
+        path: AppRoutePath.login,
+        data: null,
+        builder: (_, __) {
+          return const LoginPage();
         },
       );
 }
@@ -65,7 +78,7 @@ final class HomeRoute extends AppRoute {
     : super(
         path: AppRoutePath.home,
         data: null,
-        builder: (context, args) {
+        builder: (_, __) {
           return const MyHomePage();
         },
       );
