@@ -13,7 +13,7 @@ void main() {
       WidgetsFlutterBinding.ensureInitialized();
 
       await initFirebaseCore();
-      await initSupabase();
+      await initSupabase(debugMode: true);
 
       runApp(
         const ProviderScope(observers: [RiverpodLogger()], child: MyApp()),
