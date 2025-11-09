@@ -57,3 +57,8 @@ macos/
 linux/
 
 lib/firebase_options.dart
+
+.env
+*.env
+
+/lib/**/*.g.dart
