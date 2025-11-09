@@ -12,10 +12,11 @@ Future<FirebaseApp> initFirebaseCore() {
   );
 }
 
-Future<Supabase> initSupabase() {
+Future<Supabase> initSupabase({bool debugMode = false}) {
   return Supabase.initialize(
     url: Env.supabaseURL,
     anonKey: Env.supabaseAnonKey,
+    debug: debugMode,
   );
 }
 
